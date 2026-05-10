@@ -1,19 +1,5 @@
 """
 CV Generator — Jacob Tomy  (German-market standard, staff-level positioning)
-
-Layout follows German Lebenslauf conventions:
-  - Conservative colour palette (navy blue accent)
-  - Structured personal-details block
-  - Languages section with proficiency levels
-  - European date format (MM/YYYY)
-  - Education given strong weight
-  - Factual, metric-driven bullet points (active verbs)
-  - City + Date footer
-  - Single A4 page
-
-Staff-level positioning:
-  - Ownership language throughout
-  - Operational excellence, reliability, performance, cost savings
 """
 
 from reportlab.lib.pagesizes import A4
@@ -47,7 +33,6 @@ def S(name, **kw):
 NAME     = S("N",  fontName="Helvetica-Bold", fontSize=20, leading=24,
              textColor=NAVY, alignment=TA_LEFT)
 TAGLINE  = S("TG", fontSize=8.5, textColor=GREY, alignment=TA_LEFT, leading=11)
-CONTACT  = S("CT", fontSize=7.8, textColor=GREY, leading=10.5)
 
 SEC      = S("SC", fontName="Helvetica-Bold", fontSize=9.2, textColor=NAVY,
              spaceBefore=3, spaceAfter=0.5)
@@ -70,8 +55,7 @@ EDU_I    = S("EI", fontName="Helvetica-Bold", fontSize=7.8)
 EDU_D    = S("ED", fontName="Helvetica-Oblique", fontSize=7.4, textColor=GREY, leading=9.5)
 EDU_DATE = S("EDT", fontSize=7.8, textColor=GREY, alignment=TA_RIGHT)
 
-FOOTER   = S("FT", fontSize=7.4, textColor=LGREY, alignment=TA_RIGHT,
-             spaceBefore=4)
+FOOTER   = S("FT", fontSize=7.4, textColor=LGREY, alignment=TA_RIGHT, spaceBefore=4)
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 def sec(title):
@@ -85,11 +69,29 @@ def role_header(company, location, title, dates):
            Paragraph(dates, R_DATE)]
     tbl = Table([row], colWidths=col_w)
     tbl.setStyle(TableStyle([
-        ("VALIGN",       (0,0), (-1,-1), "MIDDLE"),
-        ("LEFTPADDING",  (0,0), (-1,-1), 0),
-        ("RIGHTPADDING", (0,0), (-1,-1), 0),
-        ("TOPPADDING",   (0,0), (-1,-1), 0.5),
-        ("BOTTOMPADDING",(0,0), (-1,-1), 0.5),
+        ("VALIGN",       (0,0),(-1,-1), "MIDDLE"),
+        ("LEFTPADDING",  (0,0),(-1,-1), 0),
+        ("RIGHTPADDING", (0,0),(-1,-1), 0),
+        ("TOPPADDING",   (0,0),(-1,-1), 0.5),
+        ("BOTTOMPADDING",(0,0),(-1,-1), 0.5),
+    ]))
+    return tbl
+
+def role_block(company, domain, t1, d1, t2, d2):
+    col_w = [BW * 0.22, BW * 0.53, BW * 0.25]
+    row0 = [Paragraph(f"<b>{company}</b>", CO_NAME),
+            Paragraph(f"<b>{t1}</b>", R_TITLE),
+            Paragraph(d1, R_DATE)]
+    row1 = [Paragraph(domain, CO_LOC),
+            Paragraph(f"<b>{t2}</b>", R_TITLE),
+            Paragraph(d2, R_DATE)]
+    tbl = Table([row0, row1], colWidths=col_w)
+    tbl.setStyle(TableStyle([
+        ("VALIGN",       (0,0),(-1,-1), "MIDDLE"),
+        ("LEFTPADDING",  (0,0),(-1,-1), 0),
+        ("RIGHTPADDING", (0,0),(-1,-1), 0),
+        ("TOPPADDING",   (0,0),(-1,-1), 0.5),
+        ("BOTTOMPADDING",(0,0),(-1,-1), 0.5),
     ]))
     return tbl
 
@@ -97,9 +99,7 @@ def b(txt):
     return Paragraph(f"&#x2022; {txt}", BUL)
 
 
-def build(out="cv/germany/resume.pdf"):
-    """Generate German-market-standard CV with staff-level positioning."""
-
+def build(out="cv/germany/Jacob_Resume.pdf"):
     doc = SimpleDocTemplate(out, pagesize=A4,
                             leftMargin=ML, rightMargin=MR,
                             topMargin=MT, bottomMargin=MB,
@@ -112,11 +112,10 @@ def build(out="cv/germany/resume.pdf"):
     # ══════════════════════════════════════════════════════════════════════════
     s.append(Paragraph("JACOB TOMY", NAME))
     s.append(Paragraph(
-        "Senior Java Engineer  \u00b7  Operational Excellence &amp; Distributed Systems  \u00b7  7 Years Experience",
+        "Senior Software Development Engineer  \u00b7  Operational Excellence &amp; Distributed Systems  \u00b7  7 Years Experience",
         TAGLINE))
     s.append(Spacer(1, 2))
 
-    # Personal details table
     info_lbl = S("IL", fontName="Helvetica-Bold", fontSize=7.4, textColor=GREY, leading=10)
     info_val = S("IV", fontSize=7.4, textColor=DARK, leading=10)
 
@@ -124,7 +123,7 @@ def build(out="cv/germany/resume.pdf"):
         [Paragraph("Email", info_lbl),       Paragraph("jacobtomy721@gmail.com", info_val),
          Paragraph("Location", info_lbl),    Paragraph("Bengaluru, India", info_val)],
         [Paragraph("LinkedIn", info_lbl),    Paragraph("linkedin.com/in/jacob-tomy", info_val),
-         Paragraph("GitHub", info_lbl),      Paragraph("github.com/jacob-tomy", info_val)],
+         Paragraph("GitHub", info_lbl),      Paragraph("github.com/hijker", info_val)],
         [Paragraph("Nationality", info_lbl), Paragraph("Indian", info_val),
          Paragraph("Languages", info_lbl),   Paragraph("English (professional proficiency), Malayalam (native)", info_val)],
     ]
@@ -139,15 +138,15 @@ def build(out="cv/germany/resume.pdf"):
     s.append(HRFlowable(width=BW, thickness=1.2, color=NAVY, spaceAfter=2))
 
     # ══════════════════════════════════════════════════════════════════════════
-    # PROFILE — staff-level: ownership, operational excellence, reliability, cost
+    # PROFILE
     # ══════════════════════════════════════════════════════════════════════════
     s += sec("Profile")
     s.append(Paragraph(
-        "Backend-focused Senior Java Engineer with 7 years owning the reliability, performance, and "
-        "cost efficiency of high-throughput distributed systems at Walmart Global Tech and Clari. "
-        "Core competencies in <b>Apache Kafka, Change Data Capture (CDC), RDBMS integration</b> "
-        "(PostgreSQL, Cosmos DB, MongoDB, Cassandra), and <b>cloud-native deployments</b> "
-        "(Azure, AWS, Kubernetes). Proven track record: "
+        "Backend-focused Senior Software Development Engineer with 7 years owning the reliability, "
+        "performance, and cost efficiency of high-throughput distributed systems at Walmart Global Tech "
+        "and Clari. Core competencies in <b>Apache Kafka</b>, event-driven architectures, "
+        "database optimisation (<b>Cosmos DB, Elasticsearch, PostgreSQL, MongoDB</b>), and "
+        "<b>cloud-native deployments</b> (Azure, AWS, Kubernetes). Proven track record: "
         "<b>20\u00d7 latency reductions, 40% storage-cost savings, 60% MTTR improvement</b> \u2014 "
         "combined with cross-team technical ownership and engineering mentorship.",
         PROFILE))
@@ -158,83 +157,75 @@ def build(out="cv/germany/resume.pdf"):
     # ══════════════════════════════════════════════════════════════════════════
     s += sec("Professional Experience")
 
-    # ── Walmart: Senior SDE ──────────────────────────────────────────────────
-    s.append(role_header("Walmart Global Tech", "Bengaluru, India",
-                         "Senior Software Development Engineer", "05/2024 \u2013 Present"))
-    s.append(Paragraph("Bengaluru, India  \u00b7  E-Commerce &amp; Retail  \u00b7  Platform Reliability", CO_LOC))
+    # ── Walmart ───────────────────────────────────────────────────────────────
+    s.append(role_block("Walmart Global Tech",
+                        "Online Pick-up &amp; Delivery (OPD)  \u00b7  E-Commerce",
+                        "Senior Software Development Engineer", "05/2024 \u2013 Present",
+                        "Software Development Engineer III", "05/2022 \u2013 05/2024"))
     s.append(Paragraph(
-        "Java 21 \u00b7 Spring Boot 3.x \u00b7 Apache Kafka \u00b7 Cosmos DB \u00b7 PostgreSQL \u00b7 Kubernetes \u00b7 Azure \u00b7 Docker",
+        "Java 21 \u00b7 Spring Boot 3.x \u00b7 Apache Kafka \u00b7 Cosmos DB \u00b7 Elasticsearch \u00b7 Kubernetes \u00b7 Azure \u00b7 Docker",
         STACK))
     for t in [
-        "<b>Owned end-to-end reliability</b> of event-driven order platform processing "
-        "<b>6K OPM avg / 40K OPM peak</b> \u2014 authored Kafka schemas, API contracts, "
-        "and HLD/LLD docs adopted across a <b>20-engineer platform</b>.",
-
-        "<b>Established schema governance</b> and cross-team code-review standards; "
-        "managed contributions from upstream/downstream teams in open-source-style processes.",
-
-        "<b>Architected priority-routing Kafka pipeline</b> isolating express-order traffic \u2014 "
-        "<b>300+ OPM</b> at zero additional infrastructure cost.",
-
-        "<b>Drove 40% storage-cost reduction</b> via custom zstd dictionary compression "
-        "for high-volume Cosmos DB payloads \u2014 significantly lowering Azure cloud spend.",
-
-        "<b>Reduced cross-service latency from 400\u202fms to 20\u202fms</b> by re-architecting "
-        "real-time order-amendment flow across multiple backend services.",
+        "<b>Owned reliability of the OPD order platform</b> across multiple teams \u2014 "
+        "a <b>40+ engineer</b> system processing <b>6K OPM avg / 40K OPM peak</b>.",
 
         "<b>Championed Java 8/11 \u2192 21 migration</b> (virtual threads, Spring Boot 3.x); "
         "guided 3 teams through the upgrade and standardised dependency management.",
 
+        "<b>Led multiple cross-team initiatives end to end</b> \u2014 Real-Time Order Amends, "
+        "Pay-for-Speed (expedited delivery tiers) \u2014 from understanding requirements across "
+        "product and dependent teams, through tradeoff negotiation, contract &amp; design delivery, "
+        "implementation with guidance for junior developers, integration testing, and production rollout.",
+
+        "<b>Architected priority-routing Kafka pipeline</b> isolating express-order traffic \u2014 "
+        "<b>1K+ OPM</b> at zero additional infrastructure cost.",
+
+        "<b>Drove 40% storage-cost reduction</b> via custom zstd dictionary compression "
+        "for high-volume Cosmos DB payloads \u2014 significantly lowering Azure cloud spend.",
+
+        "<b>Audit Migration from Cosmos to Cassandra</b>, saving <b>~$5K/month</b> in storage "
+        "costs; built a generalised service now being adopted by more OPD teams.",
+
+        "<b>Reduced end-to-end latency from 400\u202fms to 20\u202fms</b> by re-architecting "
+        "the mid-delivery order-amendment flow across multiple backend services.",
+
+        "<b>Built in-house Kafka payload comparator</b> \u2014 customisable mismatch detection "
+        "with automated Slack alerting, enabling teams to catch data-contract violations during migrations in real time.",
+
         "<b>Hardened 25+ microservices</b> \u2014 Docker configs, CI/CD pipelines, release "
         "workflows \u2014 <b>50% faster startup</b>, <b>30% lower resource usage</b>.",
-
-        "<b>Mentored 3 engineers</b> through system-design reviews, feature planning, and code reviews.",
     ]:
         s.append(b(t))
     s.append(Spacer(1, 0.5))
 
-    # ── Walmart: SDE III ─────────────────────────────────────────────────────
-    s.append(role_header("Walmart Global Tech", "Bengaluru, India",
-                         "Software Development Engineer III", "05/2022 \u2013 05/2024"))
-    s.append(Paragraph(
-        "Promoted within the same platform team. Key contributions listed above span both roles.",
-        S("note", fontName="Helvetica-Oblique", fontSize=7.2, textColor=LGREY, leading=9.5)))
-    s.append(Spacer(1, 1.5))
-
-    # ── Clari ────────────────────────────────────────────────────────────────
-    s.append(role_header("Clari (Revenue Intelligence)", "Bengaluru, India",
-                         "Software Development Engineer II", "01/2021 \u2013 05/2022"))
-    s.append(Paragraph("Bengaluru, India  \u00b7  CRM &amp; Data Ingestion", CO_LOC))
+    # ── Clari ─────────────────────────────────────────────────────────────────
+    s.append(role_block("Clari (Revenue Intelligence)",
+                        "CRM &amp; Data Ingestion",
+                        "Software Development Engineer II", "01/2021 \u2013 05/2022",
+                        "Software Development Engineer I", "07/2019 \u2013 12/2020"))
     s.append(Paragraph("Java 8 \u00b7 Spring Boot \u00b7 PostgreSQL \u00b7 MongoDB \u00b7 AWS \u00b7 REST APIs", STACK))
     for t in [
-        "<b>Owned the Autocapture data-ingestion engine</b> \u2014 high-throughput, "
-        "fault-tolerant data loading across <b>200+ enterprise organisations</b>.",
+        "Owned the Autocapture data-ingestion engine \u2014 high-throughput, "
+        "fault-tolerant data capture to CRM across <b>200+ enterprise organisations</b>.",
 
-        "<b>Built API connectors</b> (G Suite, Outlook) ingesting emails and calendar events "
+        "Built API connectors (G Suite, Outlook) ingesting emails and calendar events "
         "for <b>500K+ end users</b> with high availability.",
 
-        "<b>Optimised PostgreSQL queries and REST endpoints</b> \u2014 reduced <b>p99 latency</b>; "
+        "Optimised PostgreSQL queries and REST endpoints \u2014 reduced <b>p99 latency</b>; "
         "overhauled exception handling (10% CPU reduction).",
     ]:
         s.append(b(t))
     s.append(Spacer(1, 0.5))
 
-    # ── Clari SDE I ──────────────────────────────────────────────────────────
-    s.append(role_header("Clari (Revenue Intelligence)", "Bengaluru, India",
-                         "Software Development Engineer I", "07/2019 \u2013 12/2020"))
-    s.append(Paragraph(
-        "Contributed to the same Autocapture platform. Promoted to SDE II based on performance.",
-        S("note2", fontName="Helvetica-Oblique", fontSize=7.2, textColor=LGREY, leading=9.5)))
     s.append(Spacer(1, 2))
 
     # ══════════════════════════════════════════════════════════════════════════
     # EDUCATION
     # ══════════════════════════════════════════════════════════════════════════
     s += sec("Education")
-
     edu_data = [
         [Paragraph("<b>Indian Institute of Technology (IIT), Kharagpur</b>", EDU_I),
-         Paragraph("09/2014 \u2013 06/2019", EDU_DATE)],
+         Paragraph("2014 \u2013 2019", EDU_DATE)],
         [Paragraph("M.Tech + B.Tech, Computer Science &amp; Engineering (5-Year Integrated Dual Degree)", EDU_D),
          Paragraph("", EDU_D)],
         [Paragraph("Thesis: Healthcare records system developed in collaboration with AIIMS clinicians", EDU_D),
@@ -251,7 +242,7 @@ def build(out="cv/germany/resume.pdf"):
 
     cert_data = [
         [Paragraph("<b>Generative AI Certification</b> \u2014 IIT Kharagpur (delivered at Walmart)", EDU_D),
-         Paragraph("2025 \u2013 2026", EDU_DATE)],
+         Paragraph("2026", EDU_DATE)],
     ]
     cert_tbl = Table(cert_data, colWidths=[BW*0.78, BW*0.22])
     cert_tbl.setStyle(TableStyle([
@@ -268,10 +259,10 @@ def build(out="cv/germany/resume.pdf"):
     s += sec("Technical Skills")
     skills = [
         ("Languages &amp; Frameworks", "Java (8, 17, 21),  Spring Boot (2.7, 3.x),  Python,  ReactJS"),
-        ("Data Streaming &amp; CDC",   "Apache Kafka (schema design, CDC patterns, priority routing),  Debezium (familiar),  Event Sourcing"),
-        ("Databases",                  "PostgreSQL,  Cosmos DB,  MongoDB,  Cassandra,  Elasticsearch"),
+        ("Event Streaming",            "Apache Kafka (schema design, priority routing, event-driven pipelines)"),
+        ("SQL Databases",              "PostgreSQL,  Cassandra"),
+        ("NoSQL Databases",            "Cosmos DB,  MongoDB,  Elasticsearch"),
         ("Cloud &amp; DevOps",         "Azure,  AWS,  Kubernetes,  Docker,  CI/CD Pipelines,  GitHub Actions,  Prometheus,  Grafana"),
-        ("Data Formats",               "zstd Compression,  Parquet (familiar),  Apache Iceberg (familiar),  JSON / Avro Schemas"),
         ("Architecture",               "Distributed Systems,  Microservices,  HLD / LLD,  API Contracts,  Agile / Scrum"),
     ]
     sk_rows = [[Paragraph(k, SK_KEY), Paragraph(v, SK_VAL)] for k, v in skills]
@@ -292,6 +283,7 @@ def build(out="cv/germany/resume.pdf"):
         "<b>2nd Prize</b> \u2014 lablab.ai Global AI Hackathon (2026): NL2SQL real-time analytics dashboard.",
         "<b>Excellence Award</b> \u2014 Walmart (2025): 40% storage-cost reduction via zstd compression.",
         "<b>Bravo Award</b> \u2014 Walmart (2025): AI on-call agent reducing incident MTTR by 60%.",
+        "<b>Bravo Award</b> \u2014 Walmart (2025): Quick migration of legacy applications to modern platform stack.",
         "<b>Excellence Award</b> \u2014 Walmart (2024): Priority Kafka pipeline \u2014 zero extra infrastructure cost.",
         "<b>Runner-Up</b> \u2014 Walmart Global Techathon (2022): Data-driven recommendation engine.",
         "<b>Winner</b> \u2014 Clari Innovates Hackathon (2021): Internal tooling platform, adopted company-wide.",

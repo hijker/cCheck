@@ -99,20 +99,16 @@ def build(out=None, intl=True):
     s += sec("Experience")
 
     # Walmart
-    s.append(role_block("Walmart Global Tech","OPD (Online Pickup &amp; Delivery) \u00b7 E-Commerce",
+    s.append(role_block("Walmart Global Tech","Online Pick-up &amp; Delivery (OPD) \u00b7 E-Commerce",
                         "Senior Software Development Engineer","May 2024 \u2013 Present",
                         "Software Development Engineer III","May 2022 \u2013 May 2024"))
     s.append(Paragraph(
         "Java 21 \u00b7 Spring Boot 3.x \u00b7 Kafka \u00b7 Cosmos DB \u00b7 Elasticsearch \u00b7 Kubernetes \u00b7 Azure \u00b7 Redis \u00b7 Python \u00b7 LLMs",
         STACK))
     for t in [
-        "<b>OPD Platform Ownership:</b> Owned reliability of Walmart\u2019s Online Pickup &amp; Delivery "
-        "order platform processing <b>6K OPM</b> avg, <b>40K OPM</b> at peak across a "
-        "<b>20-engineer, multi-team platform</b>.",
-
-        "<b>Cross-Team Schema Design:</b> Drove Kafka payload schema design for OPD \u2014 gathered "
-        "requirements from multiple upstream/downstream teams, negotiated trade-offs, and delivered "
-        "schemas + HLD/LLD docs adopted platform-wide.",
+        "<b>OPD Platform Ownership:</b> Owned reliability of Walmart\u2019s Online Pick-up &amp; Delivery "
+        "order platform across multiple teams \u2014 a <b>40+ engineer</b> system processing "
+        "<b>6K OPM</b> avg, <b>40K OPM</b> at peak.",
 
         "<b>Platform Migration:</b> Championed Java 8/11 \u2192 Java 21 + Spring Boot 3.x migration "
         "(virtual threads); guided <b>3 teams</b> through the upgrade, standardised BOM adoption, "
@@ -121,11 +117,20 @@ def build(out=None, intl=True):
         "<b>Operational Intelligence:</b> Built GPT-4o-powered on-call agent surfacing runbook excerpts, "
         "incident history, and live dependency state \u2014 cutting mean time to resolution by <b>60%</b>.",
 
+        "<b>End-to-End Initiative Ownership:</b> Led multiple cross-team initiatives \u2014 real-time "
+        "order amends, Pay-for-Speed (expedited delivery tiers) \u2014 end to end: understanding "
+        "requirements across product and dependent teams, tradeoff negotiation, contract &amp; design "
+        "delivery, implementation alongside junior developers, integration testing, and production rollout.",
+
         "<b>Performance Engineering:</b> Re-architected mid-delivery order-amendment flow across "
         "multiple backend services, reducing end-to-end latency from <b>400\u202fms \u2192 20\u202fms</b>.",
 
         "<b>Cost Optimisation:</b> Designed zstd dictionary-compression layer for high-volume Cosmos DB "
         "payloads \u2014 drove <b>40% storage reduction</b>, significantly lowering Azure cloud spend.",
+
+        "<b>Data-Layer Migration:</b> Migrated audit data from Cosmos DB to Cassandra, saving "
+        "<b>~$5K/month</b> in storage costs; built a generalised migration service now being adopted "
+        "by other OPD teams.",
 
         "<b>Infrastructure Efficiency:</b> Architected priority Kafka pipeline isolating express-order "
         "traffic \u2014 routing <b>1K+ OPM</b> at zero additional infrastructure cost.",
@@ -133,11 +138,12 @@ def build(out=None, intl=True):
         "<b>Revenue Impact:</b> Delivered end-to-end premium delivery feature enabling faster fulfilment "
         "tiers, directly contributing to Walmart\u2019s quick-commerce revenue growth.",
 
+        "<b>Observability Tooling:</b> Built in-house customisable Kafka payload comparator \u2014 "
+        "automated mismatch detection with Slack alerting, enabling teams to catch data-contract "
+        "violations in real time.",
+
         "<b>Operational Hardening:</b> Secured <b>25+ microservices</b> \u2014 Docker configs, CI/CD "
         "pipelines, container security \u2014 <b>50% faster startup</b>, <b>30% lower resource usage</b>.",
-
-        "<b>Engineering Mentorship:</b> Mentored 3 engineers through system-design reviews, feature "
-        "planning, and code reviews \u2014 driving consistent on-time sprint delivery.",
     ]:
         s.append(b(t))
     s.append(Spacer(1,2))
@@ -190,6 +196,8 @@ def build(out=None, intl=True):
          "zstd compression: 40% Cosmos DB storage reduction, lower Azure spend."),
         ("\u2605 <b>Bravo Award (2025) \u2014 Walmart</b>",
          "GPT-4o on-call agent surfacing live incident context, cutting MTTR by 60%."),
+        ("\u2605 <b>Bravo Award (2025) \u2014 Walmart</b>",
+         "Quick migration of legacy applications to modern platform stack."),
         ("\u2605 <b>Excellence Award (2024) \u2014 Walmart</b>",
          "Priority Kafka pipeline \u2014 100% of express orders, zero extra cost."),
         ("\u25cf <b>Walmart Global Techathon \u2014 Runner-Up (2022)</b>",
