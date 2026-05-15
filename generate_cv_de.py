@@ -182,7 +182,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
         "<b>Drove 40% storage-cost reduction</b> via custom zstd dictionary compression "
         "for high-volume Cosmos DB payloads - significantly lowering Azure cloud spend.",
 
-        "<b>Audit Migration from Cosmos to Cassandra</b>, saving <b>~$5K/month</b> in storage "
+        "<b>Migrated audit data from Cosmos DB to Cassandra</b>, saving <b>~$5K/month</b> in storage "
         "costs; built a generalised service now being adopted by more OPD teams.",
 
         "<b>Reduced end-to-end latency from 400ms to 20ms</b> by re-architecting "
@@ -230,7 +230,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
          Paragraph("2014 - 2019", EDU_DATE)],
         [Paragraph("M.Tech + B.Tech, Computer Science &amp; Engineering (5-Year Integrated Dual Degree)", EDU_D),
          Paragraph("", EDU_D)],
-        [Paragraph("Thesis: Blockchain based healthcare records system developed in collaboration with AIIMS clinicians", EDU_D),
+        [Paragraph("Thesis: Blockchain-based healthcare records system developed in collaboration with AIIMS clinicians", EDU_D),
          Paragraph("", EDU_D)],
     ]
     edu_tbl = Table(edu_data, colWidths=[BW*0.78, BW*0.22])
@@ -286,7 +286,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
         "<b>Excellence Award</b> - Walmart (2025): 40% storage-cost reduction via zstd compression.",
         "<b>Bravo Award</b> - Walmart (2025): AI on-call agent reducing incident MTTR by 60%.",
         "<b>Bravo Award</b> - Walmart (2025): Quick migration of legacy applications to modern platform stack.",
-        "<b>Bravo Award</b> - Walmart (2024): For being the On-call champion of the team proactive in identifying and mitigating issues.",
+        "<b>Bravo Award</b> - Walmart (2024): On-call champion - proactive in identifying and mitigating production issues.",
         "<b>Excellence Award</b> - Walmart (2024): Priority Kafka pipeline - zero extra infrastructure cost.",
         "<b>Runner-Up</b> - Walmart Global Techathon (2022): Data-driven recommendation engine.",
         "<b>Winner</b> - Clari Innovates Hackathon (2021): Internal tooling platform, adopted company-wide.",
