@@ -30,14 +30,14 @@ NAME    = S("N",  fontName="Helvetica-Bold", fontSize=19, leading=22, textColor=
 TAGLINE = S("TL", fontSize=8.4, textColor=GREY, alignment=TA_CENTER, leading=11)
 CONTACT = S("CT", fontSize=7.6, textColor=RED, alignment=TA_CENTER, leading=10)
 SUMMARY = S("SU", fontSize=7.8, textColor=GREY, leading=11, alignment=TA_LEFT)
-SEC     = S("SC", fontName="Helvetica-Bold", fontSize=9, textColor=RED, spaceBefore=2, spaceAfter=0.5)
+SEC     = S("SC", fontName="Helvetica-Bold", fontSize=9, textColor=RED, spaceBefore=1, spaceAfter=0.5)
 CO_NAME = S("CN", fontName="Helvetica-Bold", fontSize=8.4, textColor=RED)
 CO_DOM  = S("CD", fontName="Helvetica-Oblique", fontSize=7.2, textColor=GREY, leading=9.5)
 R_TITLE  = S("RT",  fontName="Helvetica-Bold", fontSize=8.2, textColor=DARK)
 R_TITLE2 = S("RT2", fontName="Helvetica-Bold", fontSize=8.2, textColor=DARK, leading=10.5)
 R_DATE   = S("RD",  fontSize=8.2, textColor=GREY, alignment=TA_RIGHT)
-STACK   = S("ST", fontName="Helvetica-Oblique", fontSize=7.6, textColor=GREY, leading=10, spaceAfter=1.5)
-BUL     = S("BL", fontSize=7.8, leading=10.5, leftIndent=8, spaceAfter=0.5, alignment=TA_LEFT)
+STACK   = S("ST", fontName="Helvetica-Oblique", fontSize=7.6, textColor=GREY, leading=10, spaceAfter=1)
+BUL     = S("BL", fontSize=7.8, leading=10.2, leftIndent=8, spaceAfter=0.3, alignment=TA_LEFT)
 SK_KEY  = S("SKK", fontName="Helvetica-Bold", fontSize=7.8, leading=10.5)
 SK_VAL  = S("SKV", fontSize=7.8, textColor=GREY, leading=10.5)
 EDU_I   = S("EI", fontName="Helvetica-Bold", fontSize=8)
@@ -142,6 +142,9 @@ def build(out=None, intl=True):
         "automated mismatch detection with Slack alerting, enabling teams to catch data-contract "
         "violations in real time.",
 
+        "<b>Service Topology:</b> Split and consolidated microservices as traffic patterns and service "
+        "responsibilities evolved \u2014 right-sizing the platform\u2019s service boundaries over time.",
+
         "<b>Operational Hardening:</b> Secured <b>25+ microservices</b> \u2014 Docker configs, CI/CD "
         "pipelines, container security \u2014 <b>50% faster startup</b>, <b>30% lower resource usage</b>.",
     ]:
@@ -198,6 +201,8 @@ def build(out=None, intl=True):
          "GPT-4o on-call agent surfacing live incident context, cutting MTTR by 60%."),
         ("\u2605 <b>Bravo Award (2025) \u2014 Walmart</b>",
          "Quick migration of legacy applications to modern platform stack."),
+        ("\u2605 <b>Bravo Award (2024) \u2014 Walmart</b>",
+         "On-call champion of the team."),
         ("\u2605 <b>Excellence Award (2024) \u2014 Walmart</b>",
          "Priority Kafka pipeline \u2014 100% of express orders, zero extra cost."),
         ("\u25cf <b>Walmart Global Techathon \u2014 Runner-Up (2022)</b>",

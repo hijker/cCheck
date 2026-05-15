@@ -123,11 +123,9 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
         [Paragraph("Email", info_lbl),       Paragraph("jacobtomy721@gmail.com", info_val),
          Paragraph("Location", info_lbl),    Paragraph("Bengaluru, India", info_val)],
         [Paragraph("LinkedIn", info_lbl),    Paragraph("linkedin.com/in/jacob-tomy", info_val),
-         Paragraph("GitHub", info_lbl),      Paragraph("github.com/hijker", info_val)],
-        [Paragraph("Nationality", info_lbl), Paragraph("Indian", info_val),
          Paragraph("Languages", info_lbl),   Paragraph("English (professional proficiency)", info_val)],
     ]
-    info_tbl = Table(info_data, colWidths=[BW*0.11, BW*0.36, BW*0.11, BW*0.42])
+    info_tbl = Table(info_data, colWidths=[BW*0.11, BW*0.35, BW*0.11, BW*0.35], hAlign="CENTER")
     info_tbl.setStyle(TableStyle([
         ("LEFTPADDING",  (0,0),(-1,-1), 0), ("RIGHTPADDING",(0,0),(-1,-1), 2),
         ("TOPPADDING",   (0,0),(-1,-1), 0.5), ("BOTTOMPADDING",(0,0),(-1,-1), 0.5),
@@ -193,6 +191,9 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
         "<b>Built in-house Kafka payload comparator</b> - customisable mismatch detection "
         "with automated Slack alerting, enabling teams to catch data-contract violations during migrations in real time.",
 
+        "<b>Split and consolidated microservices</b> as traffic patterns and service responsibilities "
+        "evolved - right-sizing the platform's service boundaries over time.",
+
         "<b>Hardened 25+ microservices</b> - Docker configs, CI/CD pipelines, release "
         "workflows - <b>50% faster startup</b>, <b>30% lower resource usage</b>.",
     ]:
@@ -229,7 +230,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
          Paragraph("2014 - 2019", EDU_DATE)],
         [Paragraph("M.Tech + B.Tech, Computer Science &amp; Engineering (5-Year Integrated Dual Degree)", EDU_D),
          Paragraph("", EDU_D)],
-        [Paragraph("Thesis: Healthcare records system developed in collaboration with AIIMS clinicians", EDU_D),
+        [Paragraph("Thesis: Blockchain based healthcare records system developed in collaboration with AIIMS clinicians", EDU_D),
          Paragraph("", EDU_D)],
     ]
     edu_tbl = Table(edu_data, colWidths=[BW*0.78, BW*0.22])
@@ -281,10 +282,11 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     # ══════════════════════════════════════════════════════════════════════════
     s += sec("Awards")
     ach = [
-        "<b>2nd Prize</b> - lablab.ai Global AI Hackathon (2026): NL2SQL real-time analytics dashboard.",
+        "<b>2nd Prize</b> - lablab.ai Global AI Hackathon in Dubai (2026): NL2SQL real-time analytics dashboard.",
         "<b>Excellence Award</b> - Walmart (2025): 40% storage-cost reduction via zstd compression.",
         "<b>Bravo Award</b> - Walmart (2025): AI on-call agent reducing incident MTTR by 60%.",
         "<b>Bravo Award</b> - Walmart (2025): Quick migration of legacy applications to modern platform stack.",
+        "<b>Bravo Award</b> - Walmart (2024): For being the On-call champion of the team proactive in identifying and mitigating issues.",
         "<b>Excellence Award</b> - Walmart (2024): Priority Kafka pipeline - zero extra infrastructure cost.",
         "<b>Runner-Up</b> - Walmart Global Techathon (2022): Data-driven recommendation engine.",
         "<b>Winner</b> - Clari Innovates Hackathon (2021): Internal tooling platform, adopted company-wide.",
