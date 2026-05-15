@@ -262,8 +262,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     skills = [
         ("Languages &amp; Frameworks", "Java (8, 17, 21),  Spring Boot (2.7, 3.x),  Python,  ReactJS"),
         ("Event Streaming",            "Apache Kafka (schema design, priority routing, event-driven pipelines)"),
-        ("SQL Databases",              "PostgreSQL,  Cassandra"),
-        ("NoSQL Databases",            "Cosmos DB,  MongoDB,  Elasticsearch"),
+        ("Databases",                  "Cosmos DB,  Cassandra,  MongoDB,  Elasticsearch,  PostgreSQL"),
         ("Cloud &amp; DevOps",         "Azure,  AWS,  Kubernetes,  Docker,  CI/CD Pipelines,  GitHub Actions,  Prometheus,  Grafana"),
         ("Architecture",               "Distributed Systems,  Microservices,  HLD / LLD,  API Contracts,  Agile / Scrum"),
     ]
