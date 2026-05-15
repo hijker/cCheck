@@ -9,7 +9,7 @@ from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
 )
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.lib.enums import TA_CENTER, TA_RIGHT, TA_LEFT
+from reportlab.lib.enums import TA_CENTER, TA_RIGHT, TA_LEFT, TA_JUSTIFY
 
 # ── palette ───────────────────────────────────────────────────────────────────
 NAVY     = colors.HexColor("#1B3A5C")
@@ -37,7 +37,7 @@ TAGLINE  = S("TG", fontSize=8.5, textColor=GREY, alignment=TA_LEFT, leading=11)
 SEC      = S("SC", fontName="Helvetica-Bold", fontSize=9.2, textColor=NAVY,
              spaceBefore=3, spaceAfter=0.5)
 
-PROFILE  = S("PR", fontSize=7.8, textColor=GREY, leading=11, alignment=TA_LEFT)
+PROFILE  = S("PR", fontSize=7.8, textColor=GREY, leading=11, alignment=TA_JUSTIFY)
 
 CO_NAME  = S("CN", fontName="Helvetica-Bold", fontSize=8.4, textColor=NAVY)
 CO_LOC   = S("CL", fontName="Helvetica-Oblique", fontSize=7.2, textColor=LGREY, leading=9.5)
@@ -46,7 +46,7 @@ R_DATE   = S("RD", fontSize=7.8, textColor=GREY, alignment=TA_RIGHT)
 STACK    = S("ST", fontName="Helvetica-Oblique", fontSize=7.4, textColor=GREY,
              leading=9.5, spaceAfter=1)
 BUL      = S("BL", fontSize=7.6, leading=10.2, leftIndent=8, spaceAfter=0.4,
-             alignment=TA_LEFT)
+             alignment=TA_JUSTIFY)
 
 SK_KEY   = S("SKK", fontName="Helvetica-Bold", fontSize=7.6, leading=10)
 SK_VAL   = S("SKV", fontSize=7.6, textColor=GREY, leading=10)
@@ -308,7 +308,6 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     # FOOTER
     # ══════════════════════════════════════════════════════════════════════════
     s.append(Spacer(1, 4))
-    s.append(Paragraph("Bengaluru, May 2026", FOOTER))
 
     doc.build(s)
     print(f"\u2705  German-standard CV written to: {out}")
