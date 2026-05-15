@@ -112,7 +112,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     # ══════════════════════════════════════════════════════════════════════════
     s.append(Paragraph("JACOB TOMY", NAME))
     s.append(Paragraph(
-        "Senior Software Development Engineer  *  Operational Excellence &amp; Distributed Systems  *  7 Years Experience",
+        "Senior Software Development Engineer  *  Operational Excellence, Distributed Systems &amp; Applied AI  *  7 Years Experience",
         TAGLINE))
     s.append(Spacer(1, 2))
 
@@ -125,7 +125,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
         [Paragraph("LinkedIn", info_lbl),    Paragraph("linkedin.com/in/jacob-tomy", info_val),
          Paragraph("GitHub", info_lbl),      Paragraph("github.com/hijker", info_val)],
         [Paragraph("Nationality", info_lbl), Paragraph("Indian", info_val),
-         Paragraph("Languages", info_lbl),   Paragraph("English (professional proficiency), Malayalam (native)", info_val)],
+         Paragraph("Languages", info_lbl),   Paragraph("English (professional proficiency)", info_val)],
     ]
     info_tbl = Table(info_data, colWidths=[BW*0.11, BW*0.36, BW*0.11, BW*0.42])
     info_tbl.setStyle(TableStyle([
@@ -142,11 +142,12 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     # ══════════════════════════════════════════════════════════════════════════
     s += sec("Profile")
     s.append(Paragraph(
-        "Backend-focused Senior Software Development Engineer with 7 years owning the reliability, "
+        "Backend, DevOps and AI-focused Senior Software Development Engineer with 7 years owning the reliability, "
         "performance, and cost efficiency of high-throughput distributed systems at Walmart Global Tech "
         "and Clari. Core competencies in <b>Apache Kafka</b>, event-driven architectures, "
-        "database optimisation (<b>Cosmos DB, Elasticsearch, PostgreSQL, MongoDB</b>), and "
-        "<b>cloud-native deployments</b> (Azure, AWS, Kubernetes). Proven track record: "
+        "database optimisation (<b>Cosmos DB, Cassandra, Elasticsearch, PostgreSQL, MongoDB</b>), "
+        "<b>cloud-native deployments</b> (Azure, AWS, Kubernetes), and <b>applied Generative AI</b>. "
+        "Proven track record: "
         "<b>20x latency reductions, 40% storage-cost savings, 60% MTTR improvement</b> - "
         "combined with cross-team technical ownership and engineering mentorship.",
         PROFILE))
