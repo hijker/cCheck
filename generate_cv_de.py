@@ -103,7 +103,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     doc = SimpleDocTemplate(out, pagesize=A4,
                             leftMargin=ML, rightMargin=MR,
                             topMargin=MT, bottomMargin=MB,
-                            title="Jacob Tomy \u2014 Lebenslauf",
+                            title="Jacob Tomy - Lebenslauf",
                             author="Jacob Tomy")
     s = []
 
@@ -112,7 +112,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     # ══════════════════════════════════════════════════════════════════════════
     s.append(Paragraph("JACOB TOMY", NAME))
     s.append(Paragraph(
-        "Senior Software Development Engineer  \u00b7  Operational Excellence &amp; Distributed Systems  \u00b7  7 Years Experience",
+        "Senior Software Development Engineer  *  Operational Excellence &amp; Distributed Systems  *  7 Years Experience",
         TAGLINE))
     s.append(Spacer(1, 2))
 
@@ -147,7 +147,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
         "and Clari. Core competencies in <b>Apache Kafka</b>, event-driven architectures, "
         "database optimisation (<b>Cosmos DB, Elasticsearch, PostgreSQL, MongoDB</b>), and "
         "<b>cloud-native deployments</b> (Azure, AWS, Kubernetes). Proven track record: "
-        "<b>20\u00d7 latency reductions, 40% storage-cost savings, 60% MTTR improvement</b> \u2014 "
+        "<b>20x latency reductions, 40% storage-cost savings, 60% MTTR improvement</b> - "
         "combined with cross-team technical ownership and engineering mentorship.",
         PROFILE))
     s.append(Spacer(1, 2))
@@ -159,41 +159,41 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
 
     # ── Walmart ───────────────────────────────────────────────────────────────
     s.append(role_block("Walmart Global Tech",
-                        "Online Pick-up &amp; Delivery (OPD)  \u00b7  E-Commerce",
-                        "Senior Software Development Engineer", "05/2024 \u2013 Present",
-                        "Software Development Engineer III", "05/2022 \u2013 05/2024"))
+                        "Online Pick-up &amp; Delivery (OPD)  *  E-Commerce",
+                        "Senior Software Development Engineer", "05/2024 - Present",
+                        "Software Development Engineer III", "05/2022 - 05/2024"))
     s.append(Paragraph(
-        "Java 21 \u00b7 Spring Boot 3.x \u00b7 Apache Kafka \u00b7 Cosmos DB \u00b7 Elasticsearch \u00b7 Kubernetes \u00b7 Azure \u00b7 Docker",
+        "Java 21 * Spring Boot 3.x * Apache Kafka * Cosmos DB * Elasticsearch * Kubernetes * Azure * Docker",
         STACK))
     for t in [
-        "<b>Owned reliability of the OPD order platform</b> across multiple teams \u2014 "
+        "<b>Owned reliability of the OPD order platform</b> across multiple teams - "
         "a <b>40+ engineer</b> system processing <b>6K OPM avg / 40K OPM peak</b>.",
 
-        "<b>Championed Java 8/11 \u2192 21 migration</b> (virtual threads, Spring Boot 3.x); "
+        "<b>Championed Java 8/11 -> 21 migration</b> (virtual threads, Spring Boot 3.x); "
         "guided 3 teams through the upgrade and standardised dependency management.",
 
-        "<b>Led multiple cross-team initiatives end to end</b> \u2014 Real-Time Order Amends, "
-        "Pay-for-Speed (expedited delivery tiers) \u2014 from understanding requirements across "
+        "<b>Led multiple cross-team initiatives end to end</b> - Real-Time Order Amends, "
+        "Pay-for-Speed (expedited delivery tiers) - from understanding requirements across "
         "product and dependent teams, through tradeoff negotiation, contract &amp; design delivery, "
         "implementation with guidance for junior developers, integration testing, and production rollout.",
 
-        "<b>Architected priority-routing Kafka pipeline</b> isolating express-order traffic \u2014 "
+        "<b>Architected priority-routing Kafka pipeline</b> isolating express-order traffic - "
         "<b>1K+ OPM</b> at zero additional infrastructure cost.",
 
         "<b>Drove 40% storage-cost reduction</b> via custom zstd dictionary compression "
-        "for high-volume Cosmos DB payloads \u2014 significantly lowering Azure cloud spend.",
+        "for high-volume Cosmos DB payloads - significantly lowering Azure cloud spend.",
 
         "<b>Audit Migration from Cosmos to Cassandra</b>, saving <b>~$5K/month</b> in storage "
         "costs; built a generalised service now being adopted by more OPD teams.",
 
-        "<b>Reduced end-to-end latency from 400\u202fms to 20\u202fms</b> by re-architecting "
+        "<b>Reduced end-to-end latency from 400ms to 20ms</b> by re-architecting "
         "the mid-delivery order-amendment flow across multiple backend services.",
 
-        "<b>Built in-house Kafka payload comparator</b> \u2014 customisable mismatch detection "
+        "<b>Built in-house Kafka payload comparator</b> - customisable mismatch detection "
         "with automated Slack alerting, enabling teams to catch data-contract violations during migrations in real time.",
 
-        "<b>Hardened 25+ microservices</b> \u2014 Docker configs, CI/CD pipelines, release "
-        "workflows \u2014 <b>50% faster startup</b>, <b>30% lower resource usage</b>.",
+        "<b>Hardened 25+ microservices</b> - Docker configs, CI/CD pipelines, release "
+        "workflows - <b>50% faster startup</b>, <b>30% lower resource usage</b>.",
     ]:
         s.append(b(t))
     s.append(Spacer(1, 0.5))
@@ -201,17 +201,17 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     # ── Clari ─────────────────────────────────────────────────────────────────
     s.append(role_block("Clari (Revenue Intelligence)",
                         "CRM &amp; Data Ingestion",
-                        "Software Development Engineer II", "01/2021 \u2013 05/2022",
-                        "Software Development Engineer I", "07/2019 \u2013 12/2020"))
-    s.append(Paragraph("Java 8 \u00b7 Spring Boot \u00b7 PostgreSQL \u00b7 MongoDB \u00b7 AWS \u00b7 REST APIs", STACK))
+                        "Software Development Engineer II", "01/2021 - 05/2022",
+                        "Software Development Engineer I", "07/2019 - 12/2020"))
+    s.append(Paragraph("Java 8 * Spring Boot * PostgreSQL * MongoDB * AWS * REST APIs", STACK))
     for t in [
-        "Owned the Autocapture data-ingestion engine \u2014 high-throughput, "
+        "Owned the Autocapture data-ingestion engine - high-throughput, "
         "fault-tolerant data capture to CRM across <b>200+ enterprise organisations</b>.",
 
         "Built API connectors (G Suite, Outlook) ingesting emails and calendar events "
         "for <b>500K+ end users</b> with high availability.",
 
-        "Optimised PostgreSQL queries and REST endpoints \u2014 reduced <b>p99 latency</b>; "
+        "Optimised PostgreSQL queries and REST endpoints - reduced <b>p99 latency</b>; "
         "overhauled exception handling (10% CPU reduction).",
     ]:
         s.append(b(t))
@@ -225,7 +225,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     s += sec("Education")
     edu_data = [
         [Paragraph("<b>Indian Institute of Technology (IIT), Kharagpur</b>", EDU_I),
-         Paragraph("2014 \u2013 2019", EDU_DATE)],
+         Paragraph("2014 - 2019", EDU_DATE)],
         [Paragraph("M.Tech + B.Tech, Computer Science &amp; Engineering (5-Year Integrated Dual Degree)", EDU_D),
          Paragraph("", EDU_D)],
         [Paragraph("Thesis: Healthcare records system developed in collaboration with AIIMS clinicians", EDU_D),
@@ -241,7 +241,7 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     s.append(Spacer(1, 0.5))
 
     cert_data = [
-        [Paragraph("<b>Generative AI Certification</b> \u2014 IIT Kharagpur (delivered at Walmart)", EDU_D),
+        [Paragraph("<b>Generative AI Certification</b> - IIT Kharagpur (delivered at Walmart)", EDU_D),
          Paragraph("2026", EDU_DATE)],
     ]
     cert_tbl = Table(cert_data, colWidths=[BW*0.78, BW*0.22])
@@ -280,13 +280,13 @@ def build(out="cv/germany/Jacob_Resume.pdf"):
     # ══════════════════════════════════════════════════════════════════════════
     s += sec("Awards")
     ach = [
-        "<b>2nd Prize</b> \u2014 lablab.ai Global AI Hackathon (2026): NL2SQL real-time analytics dashboard.",
-        "<b>Excellence Award</b> \u2014 Walmart (2025): 40% storage-cost reduction via zstd compression.",
-        "<b>Bravo Award</b> \u2014 Walmart (2025): AI on-call agent reducing incident MTTR by 60%.",
-        "<b>Bravo Award</b> \u2014 Walmart (2025): Quick migration of legacy applications to modern platform stack.",
-        "<b>Excellence Award</b> \u2014 Walmart (2024): Priority Kafka pipeline \u2014 zero extra infrastructure cost.",
-        "<b>Runner-Up</b> \u2014 Walmart Global Techathon (2022): Data-driven recommendation engine.",
-        "<b>Winner</b> \u2014 Clari Innovates Hackathon (2021): Internal tooling platform, adopted company-wide.",
+        "<b>2nd Prize</b> - lablab.ai Global AI Hackathon (2026): NL2SQL real-time analytics dashboard.",
+        "<b>Excellence Award</b> - Walmart (2025): 40% storage-cost reduction via zstd compression.",
+        "<b>Bravo Award</b> - Walmart (2025): AI on-call agent reducing incident MTTR by 60%.",
+        "<b>Bravo Award</b> - Walmart (2025): Quick migration of legacy applications to modern platform stack.",
+        "<b>Excellence Award</b> - Walmart (2024): Priority Kafka pipeline - zero extra infrastructure cost.",
+        "<b>Runner-Up</b> - Walmart Global Techathon (2022): Data-driven recommendation engine.",
+        "<b>Winner</b> - Clari Innovates Hackathon (2021): Internal tooling platform, adopted company-wide.",
     ]
     ach_style = S("AW2", fontSize=7.4, leading=9.8, leftIndent=0, spaceAfter=0.2)
     aw_rows = []
