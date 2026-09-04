@@ -22,7 +22,7 @@ BLUE = colors.HexColor("#1D4ED8")   # professional blue
 GREY = colors.HexColor("#64748B")   # muted grey
 
 PAGE_W, PAGE_H = A4
-ML = 15*mm;  MR = 15*mm;  MT = 10*mm;  MB = 8*mm
+ML = 15*mm;  MR = 15*mm;  MT = 15*mm;  MB = 15*mm
 BW = PAGE_W - ML - MR
 
 def S(name, **kw):
@@ -35,7 +35,7 @@ def S(name, **kw):
 NAME    = S("N",  fontName="Helvetica-Bold", fontSize=19, leading=22, textColor=DARK, alignment=TA_CENTER)
 TAGLINE = S("TL", fontSize=8.4, textColor=GREY, alignment=TA_CENTER, leading=11)
 CONTACT = S("CT", fontSize=7.6, textColor=BLUE, alignment=TA_CENTER, leading=10)
-SUMMARY = S("SU", fontSize=7.8, textColor=DARK, leading=11, alignment=TA_LEFT)
+SUMMARY = S("SU", fontSize=7.8, textColor=DARK, leading=11, spaceAfter=1, alignment=TA_LEFT)
 SEC     = S("SC", fontName="Helvetica-Bold", fontSize=9, textColor=BLUE, spaceBefore=1, spaceAfter=0.5)
 CO_NAME = S("CN", fontName="Helvetica-Bold", fontSize=8.4, textColor=BLUE)
 CO_DOM  = S("CD", fontName="Helvetica-Oblique", fontSize=7.2, textColor=GREY, leading=9.5)
@@ -43,9 +43,9 @@ R_TITLE  = S("RT",  fontName="Helvetica-Bold", fontSize=8.2, textColor=DARK)
 R_TITLE2 = S("RT2", fontName="Helvetica-Bold", fontSize=8.2, textColor=DARK, leading=10.5)
 R_DATE   = S("RD",  fontSize=8.2, textColor=GREY, alignment=TA_RIGHT)
 STACK   = S("ST", fontName="Helvetica-Oblique", fontSize=7.6, textColor=GREY, leading=10, spaceAfter=1)
-BUL     = S("BL", fontSize=7.8, leading=10.2, leftIndent=8, spaceAfter=0.3, alignment=TA_LEFT)
-SK_KEY  = S("SKK", fontName="Helvetica-Bold", fontSize=7.8, leading=10.5)
-SK_VAL  = S("SKV", fontSize=7.8, textColor=GREY, leading=10.5)
+BUL     = S("BL", fontSize=7.8, leading=10.2, leftIndent=8, firstLineIndent=-6, spaceAfter=2, alignment=TA_LEFT)
+SK_KEY  = S("SKK", fontName="Helvetica-Bold", textColor=GREY, fontSize=7.8, leading=10.5)
+SK_VAL  = S("SKV", fontSize=7.8, textColor=DARK, leading=10.5)
 EDU_I   = S("EI", fontName="Helvetica-Bold", fontSize=8)
 EDU_D   = S("ED", fontName="Helvetica-Oblique", fontSize=7.6, textColor=GREY)
 
@@ -54,7 +54,7 @@ def sec(title):
             HRFlowable(width=BW, thickness=0.55, color=BLUE, spaceAfter=2)]
 
 def role_block(co, dom, t1, d1, t2=None, d2=None):
-    col_w = [BW * 0.20, BW * 0.57, BW * 0.23]
+    col_w = [BW * 0.27, BW * 0.50, BW * 0.23]
     row0 = [Paragraph(f"<b>{co}</b>", CO_NAME),
             Paragraph(f"<b>{t1}</b>", R_TITLE),
             Paragraph(d1, R_DATE)]
@@ -64,8 +64,8 @@ def role_block(co, dom, t1, d1, t2=None, d2=None):
         row1 = [Paragraph(dom, CO_DOM), Paragraph("", R_TITLE2), Paragraph("", R_DATE)]
     tbl = Table([row0, row1], colWidths=col_w)
     tbl.setStyle(TableStyle([
-        ("VALIGN",(0,0),(-1,-1),"MIDDLE"), ("LEFTPADDING",(0,0),(-1,-1),0),
-        ("RIGHTPADDING",(0,0),(-1,-1),0), ("TOPPADDING",(0,0),(-1,-1),1),
+        ("VALIGN",(0,0),(-1,-1),"MIDDLE"), ("LEFTPADDING",(0,0),(-1,-1),5),
+        ("RIGHTPADDING",(0,0),(-1,-1),5), ("TOPPADDING",(0,0),(-1,-1),1),
         ("BOTTOMPADDING",(0,0),(-1,-1),1),
     ]))
     return tbl
@@ -87,7 +87,7 @@ def build(out=None, intl=True):
 
     # HEADER
     s += [Paragraph("JACOB TOMY", NAME), Spacer(1,1),
-          Paragraph("Senior Software Development Engineer  \u00b7  Backend &amp; Platform Reliability  \u00b7  7 Years Experience", TAGLINE),
+          Paragraph("Senior Software Engineer (SDE 4) \u00b7 Distributed Systems & Platform Architecture \u00b7  8 Years Experience", TAGLINE),
           Spacer(1,1),
           Paragraph("jacobtomy721@gmail.com  \u00b7  linkedin.com/in/jacob-tomy  \u00b7  github.com/hijker  \u00b7  Bengaluru, India", CONTACT),
           Spacer(1,2),
@@ -95,13 +95,9 @@ def build(out=None, intl=True):
 
     # SUMMARY
     s.append(Paragraph(
-        "Backend-focused Senior Engineer with 7+ years owning high-throughput distributed systems at Walmart "
-        "and Clari. Driven by <b>operational excellence</b> - building for reliability, performance, "
-        "and cost efficiency across event-driven architectures (Kafka), cloud-native deployments "
-        "(Azure/Kubernetes), and applied Generative AI. "
-        "Track record of measurable platform impact - 20x latency reductions, 40% storage-cost "
-        "savings, 60% MTTR improvement - while setting cross-team technical standards and mentoring engineers."
-        " Enjoys traveling and travel planning.",
+        "Senior Software Development Engineer with 8 years of experience building and owning large-scale distributed systems using Java, Spring Boot, and Kafka."
+        " Strong in platform architecture, event-driven systems, and reliability engineering, with measurable impact including 20x lower latency, "
+        "40% lower storage/RU consumption, and 60% lower MTTR. Experienced in leading cross-team architecture, platform modernization, and reusable engineering solutions.",
         SUMMARY))
     s.append(Spacer(1,2))
 
@@ -110,47 +106,43 @@ def build(out=None, intl=True):
 
     # Walmart
     s.append(role_block("Walmart Global Tech","Online Pick-up &amp; Delivery (OPD) \u00b7 E-Commerce",
-                        "Senior Software Development Engineer","May 2024 - Present",
-                        "Software Development Engineer III","May 2022 - May 2024"))
+                        "Senior Software Development Engineer (SDE 4)","2024 - Present",
+                        "Software Development Engineer III","2022 - 2024"))
     s.append(Paragraph(
         "Java 25 \u00b7 Spring Boot 4.x \u00b7 Kafka \u00b7 Cosmos DB \u00b7 Opensearch \u00b7 Kubernetes \u00b7 Azure \u00b7 Python \u00b7 LLMs",
         STACK))
     for t in [
-        "<b>OPD Platform Ownership:</b> Owned reliability of Walmart\u2019s Online Pick-up &amp; Delivery "
-        "order platform across multiple teams - a <b>40+ engineer</b> system processing "
-        "<b>6K OPM</b> avg, <b>40K OPM</b> at peak.",
+        "<b>OPD Platform Ownership:</b> Owned stability and reliability of Walmart\u2019s Online Pick-up & Delivery order platform across multiple teams, supporting"
+        " <b>40+ engineers</b> and <b>6K OPM</b> average / <b>45K OPM</b> peak traffic; drove capacity planning, SLA adherence,"
+        " and platform-wide incident resolution.",
 
-        "<b>Stability and Reliability:</b> Championed platform upgradations - Led Java 8/11 + Spring 2.x --> Java 25 + Spring Boot 4.x migration "
-        "for <b>3 teams</b> through the upgrades, standardised BOM adoption, "
-        "and eliminated legacy dependency risks across the platform.",
+        "<b>Stability and Reliability:</b> Championed platform modernization - Led Java 8/11 → 21/25 + Spring Boot 2.7 → 3.5/4.x migration "
+        "for <b>3 teams</b> alongside the upgrades, "
+        "standardized BOM adoption and eliminated legacy dependency risks across the platform.",
 
-        "<b>Operational Intelligence:</b> Built GPT-4o-powered on-call agent surfacing runbook excerpts, "
-        "incident history, and live dependency state - cutting mean time to resolution by <b>60%</b>.",
+        "<b>End-to-End Initiative Ownership:</b> Led cross-team initiatives driving Walmart\u2019s quick-commerce growth, "
+        "including real-time order amendments and Pay-for-Speed delivery; drove requirements, cross-team tradeoffs, API/design "
+        "contracts, implementation with junior engineers, and production rollout.",
 
-        "<b>End-to-End Initiative Ownership:</b> Led cross-team initiatives driving Walmart\u2019s quick-commerce growth,"
-        " including real-time order amendments and Pay-for-Speed expedited delivery. Owned the full lifecycle from requirements "
-        " and cross-team tradeoffs through API/design contracts, implementation with junior developers, integration testing, and production rollout.",
+        "<b>Operational Intelligence:</b> Built an LLM-powered on-call agent surfacing runbook excerpts, "
+        "incident history, and live dependency state - cutting mean time to resolution <b>(MTTR)</b> by <b>60%</b>.",
 
-        "<b>Infrastructure Efficiency:</b> Architected priority Kafka pipeline isolating express-order "
-        "traffic - routing <b>10K+ peak OPM</b> at zero additional infrastructure cost by creating a custom reusable library."
-        " Helped every team in post purchase to onboard the library in their system while making necessary improvements to ease the process.",
+        "<b>Infrastructure Efficiency:</b> Architected <b>priority kafka pipeline</b> isolating express-order "
+        "traffic, routing <b>10K+ peak OPM</b> at zero additional infrastructure cost by creating a custom reusable library;"
+        " drove adoption across 5 OPD teams and more teams in post purchase, iterating on the library to simplify integration.",
         
         "<b>Cost Optimisation:</b> Designed in-house zstd dictionary-compression layer for high-volume Cosmos DB "
-        "payloads - drove <b>40% storage and RU (Read Units) reduction</b>, significantly lowering Azure cloud spend.",
+        "payloads - drove <b>40% storage and RU (Read Units) reduction</b>, reducing Azure cloud spend.",
 
         "<b>Data-Layer Migration:</b> Migrated audit data from Cosmos DB to Cassandra, saving "
-        "<b>~$5K/month</b> in storage costs; built a generalised audit service now being adopted "
+        "<b>~$5K/month (~15% of total)</b> in storage costs; designed a generalized audit service now being adopted "
         "by other OPD teams.",
 
-        "<b>Observability Tooling:</b> Quickly spined up a customisable Kafka payload comparator - "
-        "automated mismatch detection with Slack alerting, enabling teams to catch data-contract "
-        "violations in real time.",
+        "<b>Observability Tooling:</b> Built a customizable Kafka payload comparator with automated mismatch detection and Slack alerting, "
+        "enabling teams to identify data-contract violations in real time.",
 
-        "<b>Service Topology:</b> Split and consolidated microservices as traffic patterns and service "
-        "responsibilities evolved - right-sizing the platform\u2019s service boundaries over time.",
-
-        "<b>Operational Hardening:</b> Secured <b>35+ microservices</b> - Docker configs, CI/CD "
-        "pipelines, container security - <b>50% faster startup</b>, <b>30% lower resource usage</b>.",
+        "<b>Operational Hardening:</b> Hardened <b>35+</b> microservices across Docker, CI/CD, and container security, "
+        "while optimizing container startup and resource usage to achieve 50% faster startup and 30% lower resource consumption",
     ]:
         s.append(b(t))
     s.append(Spacer(1,2))
@@ -162,7 +154,7 @@ def build(out=None, intl=True):
     s.append(Paragraph("Java 8 \u00b7 Spring Boot \u00b7 PostgreSQL \u00b7 MongoDB \u00b7 AWS", STACK))
     for t in [
         "Built and maintained the Autocapture engine - automated activity-capture system with "
-        "intelligent CRM matching, live across <b>200+ enterprise organisations</b>.",
+        "intelligent CRM matching, serving <b>200+ enterprise organizations</b>.",
 
         "Integrated G Suite and Outlook into Clari\u2019s platform, ingesting emails and calendar "
         "events for <b>500K+ end users</b>.",
@@ -176,45 +168,41 @@ def build(out=None, intl=True):
     # SKILLS
     s += sec("Skills")
     skills = [
-        ("Languages &amp; Frameworks", "Java 25,  Spring Boot 4.x,  Python,  ReactJS"),
-        ("Distributed Systems",        "Kafka,  Kubernetes,  Docker,  REST APIs"),
-        ("Cloud &amp; Infra",          "Azure,  AWS,  CI/CD (Looper),  Prometheus,  Grafana"),
-        ("Databases (NoSQL)",          "Cosmos DB, Cassandra, Elastic/Opensearch, MongoDB"),
-        ("Databases (SQL)",            "PostgreSQL"),
-        ("AI &amp; Tooling",           "LLMs,  LangGraph,  NL2SQL,  AI Agents,  Claude Code"),
-        ("Design &amp; Delivery",      "HLD,  LLD,  API Contracts,  UML,  JIRA,  Agile / Scrum"),
+        ("Languages", "Java 25,  Python"),
+        ("Backend",        "Spring Boot 4.x, REST, Kafka,  Kubernetes "),
+        ("Cloud &amp; Platform",          "Azure,  AWS,  CI/CD (Looper), Docker, Prometheus,  Grafana"),
+        ("Databases",          "Cosmos DB, Cassandra, Elastic/Opensearch, PostgreSQL, MongoDB"),
+        ("AI",           "LLMs, AI Agents, LangGraph,  NL2SQL"),
+        ("Architecture &amp; Engineering",      "HLD/LLD,  API Contracts, Distributed Systems, UML, Agile / Scrum"),
     ]
     sk_rows = [[Paragraph(k, SK_KEY), Paragraph(v, SK_VAL)] for k, v in skills]
     sk_table = Table(sk_rows, colWidths=[BW * 0.30, BW * 0.70])
     sk_table.setStyle(TableStyle([
-        ("LEFTPADDING",(0,0),(-1,-1),0), ("RIGHTPADDING",(0,0),(-1,-1),3),
-        ("TOPPADDING",(0,0),(-1,-1),0.5), ("BOTTOMPADDING",(0,0),(-1,-1),0.5),
+        ("LEFTPADDING",(0,0),(-1,-1),5), ("RIGHTPADDING",(0,0),(-1,-1),5),
+        ("TOPPADDING",(0,0),(-1,-1),0), ("BOTTOMPADDING",(0,0),(-1,-1),0),
         ("VALIGN",(0,0),(-1,-1),"TOP"),
     ]))
     s.append(sk_table)
     s.append(Spacer(1,2))
 
     # ACHIEVEMENTS
-    s += sec("Achievements")
+    s += sec('<link href="https://github.com/hijker/Awards-and-Recognitions">Achievements</link>')
     ach = [
-        ("\u2605\u2605\u2605 <b>2nd Prize - lablab.ai Global AI Hackathon (2026)</b>",
+        ("<b>2nd Prize - lablab.ai Global AI Hackathon (2026)</b>",
          "NL2SQL + LangGraph enterprise dashboard with real-time alert engine."),
-        ("\u2605\u2605 <b>Excellence Award (2026) - Walmart</b>",
-         "Built a Modular, Extensible and Adoptable service to reduce cloud spending for audit data."),
-        ("\u2605\u2605 <b>Excellence Award (2025) - Walmart</b>",
-         "Custom dictionary based compression: 40% storage & RU reduction, lower Azure spend."),
-        ("\u2605 <b>Bravo Award (2025) - Walmart</b>",
-         "GPT-4o based on-call agent surfacing live incident context, cutting MTTR by 60%."),
-        ("\u2605 <b>Bravo Award (2025) - Walmart</b>",
-         "Quick migration of legacy applications to modern platform stack."),
-        ("\u2605 <b>Bravo Award (2024) - Walmart</b>",
-         "On-call champion of the team."),
-        ("\u2605\u2605 <b>Excellence Award (2023) - Walmart</b>",
-         "Priority Kafka pipeline - Built priority Kafka "
-         "pipeline to cover 100% of express orders at zero additional cost."),
-        ("\u25cf <b>Walmart Global Techathon - Runner-Up (2022)</b>",
+        ("<b>Excellence Award (2026) - Walmart</b>",
+         "For delivering a reusable platform capability that drove measurable cloud-cost savings."),
+        ("<b>Excellence Award (2025) - Walmart</b>",
+         "For an optimization initiative that significantly reduced data storage and consumption costs."),
+        ("<b>Bravo Award (2025) - Walmart</b>",
+         "For applying Generative AI to improve on-call effectiveness and incident response"),
+        ("<b>Bravo Award (2025) - Walmart</b>",
+         "For accelerating modernization of legacy applications across the platform."),
+        ("<b>Excellence Award (2023) - Walmart</b>",
+         "For a platform scalability initiative supporting express-order growth without additional infrastructure investment"),
+        ("<b>Walmart Global Techathon - Runner-Up (2022)</b>",
          "Cart-based nutritional recommendation product for Walmart customers."),
-        ("\u25cf <b>Clari Innovates Hackathon - Winner (2021)</b>",
+        ("<b>Clari Innovates Hackathon - Winner (2021)</b>",
          "Revamped internal tooling platform, adopted company-wide."),
     ]
     ach_style = S("ACH", fontSize=7.8, leading=10.5, leftIndent=0, spaceAfter=0.3, alignment=TA_LEFT)
@@ -245,15 +233,13 @@ def build(out=None, intl=True):
          Paragraph("2014 - 2019", S("edy", fontSize=8, textColor=GREY, alignment=TA_RIGHT))],
         [Paragraph("M.Tech + B.Tech, Computer Science &amp; Engineering (5-yr Dual Degree)", EDU_D),
          Paragraph("", EDU_D)],
-        [Paragraph("M.Tech Project: Healthcare records system built in collaboration with AIIMS clinicians", EDU_D),
-         Paragraph("", EDU_D)],
         [Paragraph(
-            "\u2605 <b>Applied Al for Real-World Applications - IIT Kharagpur</b>"
-            "<font color='#555555'>  (Certification programme delivered at Walmart)</font>", EDU_CERT),
+            "Certification: <b>Applied Al for Real-World Applications - IIT Kharagpur</b>"
+            "<font color='#555555'>  (Delivered at Walmart)</font>", EDU_CERT),
          Paragraph("2026", S("ecy", fontSize=7.8, textColor=GREY, alignment=TA_RIGHT))],
     ], colWidths=[BW*0.78, BW*0.22])
     edu.setStyle(TableStyle([
-        ("LEFTPADDING",(0,0),(-1,-1),0), ("RIGHTPADDING",(0,0),(-1,-1),0),
+        ("LEFTPADDING",(0,0),(-1,-1),5), ("RIGHTPADDING",(0,0),(-1,-1),5),
         ("TOPPADDING",(0,0),(-1,-1),0.5), ("BOTTOMPADDING",(0,0),(-1,-1),0.5),
         ("VALIGN",(0,0),(-1,-1),"TOP"),
     ]))
