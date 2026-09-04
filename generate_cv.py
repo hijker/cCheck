@@ -35,17 +35,17 @@ def S(name, **kw):
 NAME    = S("N",  fontName="Helvetica-Bold", fontSize=19, leading=22, textColor=DARK, alignment=TA_CENTER)
 TAGLINE = S("TL", fontSize=8.4, textColor=GREY, alignment=TA_CENTER, leading=11)
 CONTACT = S("CT", fontSize=7.6, textColor=BLUE, alignment=TA_CENTER, leading=10)
-SUMMARY = S("SU", fontSize=7.8, textColor=DARK, leading=11, spaceAfter=1, alignment=TA_LEFT)
+SUMMARY = S("SU", fontSize=8, textColor=DARK, leading=11, spaceAfter=1, alignment=TA_LEFT)
 SEC     = S("SC", fontName="Helvetica-Bold", fontSize=9, textColor=BLUE, spaceBefore=1, spaceAfter=0.5)
 CO_NAME = S("CN", fontName="Helvetica-Bold", fontSize=8.4, textColor=BLUE)
-CO_DOM  = S("CD", fontName="Helvetica-Oblique", fontSize=7.2, textColor=GREY, leading=9.5)
-R_TITLE  = S("RT",  fontName="Helvetica-Bold", fontSize=8.2, textColor=DARK)
-R_TITLE2 = S("RT2", fontName="Helvetica-Bold", fontSize=8.2, textColor=DARK, leading=10.5)
-R_DATE   = S("RD",  fontSize=8.2, textColor=GREY, alignment=TA_RIGHT)
+CO_DOM  = S("CD", fontName="Helvetica-Oblique", fontSize=7.4, textColor=GREY, leading=9.5)
+R_TITLE  = S("RT",  fontName="Helvetica-Bold", fontSize=8.4, textColor=DARK)
+R_TITLE2 = S("RT2", fontName="Helvetica-Bold", fontSize=8.4, textColor=DARK, leading=10.5)
+R_DATE   = S("RD",  fontSize=8.4, textColor=GREY, alignment=TA_RIGHT)
 STACK   = S("ST", fontName="Helvetica-Oblique", fontSize=7.6, textColor=GREY, leading=10, spaceAfter=1)
-BUL     = S("BL", fontSize=7.8, leading=10.2, leftIndent=8, firstLineIndent=-6, spaceAfter=2, alignment=TA_LEFT)
+BUL     = S("BL", fontSize=8.2, leading=10.2, leftIndent=8, firstLineIndent=-6, spaceAfter=2, alignment=TA_LEFT)
 SK_KEY  = S("SKK", fontName="Helvetica-Bold", textColor=GREY, fontSize=7.8, leading=10.5)
-SK_VAL  = S("SKV", fontSize=7.8, textColor=DARK, leading=10.5)
+SK_VAL  = S("SKV", fontSize=8, textColor=DARK, leading=10.5)
 EDU_I   = S("EI", fontName="Helvetica-Bold", fontSize=8)
 EDU_D   = S("ED", fontName="Helvetica-Oblique", fontSize=7.6, textColor=GREY)
 
@@ -96,8 +96,8 @@ def build(out=None, intl=True):
     # SUMMARY
     s.append(Paragraph(
         "Senior Software Development Engineer with 8 years of experience building and owning large-scale distributed systems using Java, Spring Boot, and Kafka."
-        " Strong in platform architecture, event-driven systems, and reliability engineering, with measurable impact including 20x lower latency, "
-        "40% lower storage/RU consumption, and 60% lower MTTR. Experienced in leading cross-team architecture, platform modernization, and reusable engineering solutions.",
+        " Strong in platform architecture, event-driven systems, and reliability engineering, with measurable impact including <b>20x</b> lower latency, "
+        "<b>40%</b> lower storage/RU consumption, and <b>60%</b> lower MTTR. Experienced in leading cross-team architecture, platform modernization, and reusable engineering solutions.",
         SUMMARY))
     s.append(Spacer(1,2))
 
@@ -127,9 +127,9 @@ def build(out=None, intl=True):
         "<b>Operational Intelligence:</b> Built an LLM-powered on-call agent surfacing runbook excerpts, "
         "incident history, and live dependency state - cutting mean time to resolution <b>(MTTR)</b> by <b>60%</b>.",
 
-        "<b>Infrastructure Efficiency:</b> Architected <b>priority kafka pipeline</b> isolating express-order "
+        "<b>Infrastructure Efficiency:</b> Architected <b>priority Kafka pipeline</b> isolating express-order "
         "traffic, routing <b>10K+ peak OPM</b> at zero additional infrastructure cost by creating a custom reusable library;"
-        " drove adoption across 5 OPD teams and more teams in post purchase, iterating on the library to simplify integration.",
+        " drove adoption across across 5 OPD teams and extended to Post Purchase, iterating on the library to simplify integration.",
         
         "<b>Cost Optimisation:</b> Designed in-house zstd dictionary-compression layer for high-volume Cosmos DB "
         "payloads - drove <b>40% storage and RU (Read Units) reduction</b>, reducing Azure cloud spend.",
@@ -151,7 +151,7 @@ def build(out=None, intl=True):
     s.append(role_block("Clari","Revenue Intelligence \u00b7 CRM",
                         "Software Development Engineer II","2021 - 2022",
                         "Software Development Engineer I","2019 - 2021"))
-    s.append(Paragraph("Java 8 \u00b7 Spring Boot \u00b7 PostgreSQL \u00b7 MongoDB \u00b7 AWS", STACK))
+    s.append(Paragraph("Java 8 \u00b7 PostgreSQL \u00b7 MongoDB \u00b7 AWS", STACK))
     for t in [
         "Built and maintained the Autocapture engine - automated activity-capture system with "
         "intelligent CRM matching, serving <b>200+ enterprise organizations</b>.",
@@ -168,9 +168,9 @@ def build(out=None, intl=True):
     # SKILLS
     s += sec("Skills")
     skills = [
-        ("Languages", "Java 25,  Python"),
-        ("Backend",        "Spring Boot 4.x, REST, Kafka,  Kubernetes "),
-        ("Cloud &amp; Platform",          "Azure,  AWS,  CI/CD (Looper), Docker, Prometheus,  Grafana"),
+        ("Languages", "Java,  Python"),
+        ("Backend",        "Spring Boot, REST, Kafka"),
+        ("Cloud &amp; Platform",          "Azure,  AWS, Kubernetes, CI/CD (Looper), Docker, Prometheus,  Grafana"),
         ("Databases",          "Cosmos DB, Cassandra, Elastic/Opensearch, PostgreSQL, MongoDB"),
         ("AI",           "LLMs, AI Agents, LangGraph,  NL2SQL"),
         ("Architecture &amp; Engineering",      "HLD/LLD,  API Contracts, Distributed Systems, UML, Agile / Scrum"),
