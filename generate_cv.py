@@ -22,7 +22,7 @@ BLUE = colors.HexColor("#1D4ED8")   # professional blue
 GREY = colors.HexColor("#64748B")   # muted grey
 
 PAGE_W, PAGE_H = A4
-ML = 15*mm;  MR = 15*mm;  MT = 15*mm;  MB = 15*mm
+ML = 15*mm;  MR = 15*mm;  MT = 14*mm;  MB = 14*mm
 BW = PAGE_W - ML - MR
 
 def S(name, **kw):
@@ -54,7 +54,7 @@ def sec(title):
             HRFlowable(width=BW, thickness=0.55, color=BLUE, spaceAfter=2)]
 
 def role_block(co, dom, t1, d1, t2=None, d2=None):
-    col_w = [BW * 0.27, BW * 0.50, BW * 0.23]
+    col_w = [BW * 0.37, BW * 0.40, BW * 0.23]
     row0 = [Paragraph(f"<b>{co}</b>", CO_NAME),
             Paragraph(f"<b>{t1}</b>", R_TITLE),
             Paragraph(d1, R_DATE)]
@@ -96,8 +96,8 @@ def build(out=None, intl=True):
     # SUMMARY
     s.append(Paragraph(
         "Senior Software Development Engineer with 8 years of experience building and owning large-scale distributed systems using Java, Spring Boot, and Kafka."
-        " Strong in platform architecture, event-driven systems, and reliability engineering, with measurable impact including <b>20x</b> lower latency, "
-        "<b>40%</b> lower storage/RU consumption, and <b>60%</b> lower MTTR. Experienced in leading cross-team architecture, platform modernization, and reusable engineering solutions.",
+        " Specialized in platform architecture, event-driven systems, and reliability engineering, with measurable impact including <b>5×</b> lower end-to-end latency, "
+        "<b>40%</b> lower storage and RU consumption, and <b>60%</b> lower MTTR. Experienced in leading cross-team and cross-organization architecture initiatives, platform modernization, and reusable engineering solutions.",
         SUMMARY))
     s.append(Spacer(1,2))
 
@@ -109,40 +109,45 @@ def build(out=None, intl=True):
                         "Senior Software Development Engineer (SDE 4)","2024 - Present",
                         "Software Development Engineer III","2022 - 2024"))
     s.append(Paragraph(
-        "Java 25 \u00b7 Spring Boot 4.x \u00b7 Kafka \u00b7 Cosmos DB \u00b7 Opensearch \u00b7 Kubernetes \u00b7 Azure \u00b7 Python \u00b7 LLMs",
+        "Java 25 \u00b7 Spring Boot 4.x \u00b7 Kafka \u00b7 Cosmos DB \u00b7 OpenSearch \u00b7 Kubernetes \u00b7 Azure \u00b7 Python \u00b7 LLMs",
         STACK))
     for t in [
         "<b>OPD Platform Ownership:</b> Owned stability and reliability of Walmart\u2019s Online Pick-up & Delivery order platform across multiple teams, supporting"
-        " <b>40+ engineers</b> and <b>6K OPM</b> average / <b>45K OPM</b> peak traffic; drove capacity planning, SLA adherence,"
+        " <b>40+ engineers</b> and <b>6K</b> average / <b>45K</b> peak OPM (orders per minute); drove capacity planning, SLA adherence,"
         " and platform-wide incident resolution.",
+        
+        "<b>Cross-Organization Architecture:</b> Led API contract and integration discussions with external organizations"
+        " integrating with Walmart\u2019s carrier platform, defining interface contracts, resolving integration trade-offs,"
+        " and aligning technical designs across organizational boundaries.",
 
-        "<b>Stability and Reliability:</b> Championed platform modernization - Led Java 8/11 → 21/25 + Spring Boot 2.7 → 3.5/4.x migration "
+        "<b>Stability and Reliability:</b> Championed platform modernization - Led Java 8/11 → 21/25 and Spring Boot 2.7 → 3.5/4.x migration "
         "for <b>3 teams</b> alongside the upgrades, "
         "standardized BOM adoption and eliminated legacy dependency risks across the platform.",
 
         "<b>End-to-End Initiative Ownership:</b> Led cross-team initiatives driving Walmart\u2019s quick-commerce growth, "
-        "including real-time order amendments and Pay-for-Speed delivery; drove requirements, cross-team tradeoffs, API/design "
-        "contracts, implementation with junior engineers, and production rollout.",
+        "including <b>real-time order amendments</b> and <b>Pay-for-Speed</b> delivery; drove requirements, cross-team tradeoffs, API/design "
+        "contracts, implementation in collaboration with junior engineers, and production rollout.",
 
         "<b>Operational Intelligence:</b> Built an LLM-powered on-call agent surfacing runbook excerpts, "
         "incident history, and live dependency state - cutting mean time to resolution <b>(MTTR)</b> by <b>60%</b>.",
 
         "<b>Infrastructure Efficiency:</b> Architected <b>priority Kafka pipeline</b> isolating express-order "
-        "traffic, routing <b>10K+ peak OPM</b> at zero additional infrastructure cost by creating a custom reusable library;"
-        " drove adoption across across 5 OPD teams and extended to Post Purchase, iterating on the library to simplify integration.",
+        "traffic, handling <b>10K+ peak OPM</b> with zero additional infrastructure cost by creating a custom reusable library;"
+        " drove adoption across 5 OPD teams and extended to Post Purchase, iterated on the library to simplify integration."
+        " Further optimized express-order pipelines reducing Kafka hops and simplifying the pipeline, delivering 5× lower end-to-end latency.",
         
-        "<b>Cost Optimisation:</b> Designed in-house zstd dictionary-compression layer for high-volume Cosmos DB "
-        "payloads - drove <b>40% storage and RU (Read Units) reduction</b>, reducing Azure cloud spend.",
+        "<b>Cost Optimization:</b> Designed in-house zstd dictionary-compression layer for high-volume Cosmos DB "
+        "payloads - drove a <b>40% reduction in storage and RU (Read Units)</b> consumption, reducing Azure cloud spend.",
 
-        "<b>Data-Layer Migration:</b> Migrated audit data from Cosmos DB to Cassandra, saving "
-        "<b>~$5K/month (~15% of total)</b> in storage costs; designed a generalized audit service now being adopted "
+        "<b>Data Layer Migration:</b> Migrated audit data from Cosmos DB to Cassandra, saving "
+        "<b>$5K/month</b>, equivalent to a <b>~15%</b> reduction in storage costs; designed a generalized audit service now being adopted "
         "by other OPD teams.",
 
         "<b>Observability Tooling:</b> Built a customizable Kafka payload comparator with automated mismatch detection and Slack alerting, "
-        "enabling teams to identify data-contract violations in real time.",
+        "enabling teams to identify data contract violations in real time.",
 
         "<b>Operational Hardening:</b> Hardened <b>35+</b> microservices across Docker, CI/CD, and container security, "
-        "while optimizing container startup and resource usage to achieve 50% faster startup and 30% lower resource consumption",
+        "while optimizing container startup and resource usage to achieve 50% faster startup and 30% lower resource consumption.",
     ]:
         s.append(b(t))
     s.append(Spacer(1,2))
@@ -153,7 +158,7 @@ def build(out=None, intl=True):
                         "Software Development Engineer I","2019 - 2021"))
     s.append(Paragraph("Java 8 \u00b7 PostgreSQL \u00b7 MongoDB \u00b7 AWS", STACK))
     for t in [
-        "Built and maintained the Autocapture engine - automated activity-capture system with "
+        "Contributed to the development of the Autocapture engine - automated activity-capture system with "
         "intelligent CRM matching, serving <b>200+ enterprise organizations</b>.",
 
         "Integrated G Suite and Outlook into Clari\u2019s platform, ingesting emails and calendar "
@@ -171,9 +176,9 @@ def build(out=None, intl=True):
         ("Languages", "Java,  Python"),
         ("Backend",        "Spring Boot, REST, Kafka"),
         ("Cloud &amp; Platform",          "Azure,  AWS, Kubernetes, CI/CD (Looper), Docker, Prometheus,  Grafana"),
-        ("Databases",          "Cosmos DB, Cassandra, Elastic/Opensearch, PostgreSQL, MongoDB"),
+        ("Databases",          "Cosmos DB, Cassandra, Elastic/OpenSearch, PostgreSQL, MongoDB"),
         ("AI",           "LLMs, AI Agents, LangGraph,  NL2SQL"),
-        ("Architecture &amp; Engineering",      "HLD/LLD,  API Contracts, Distributed Systems, UML, Agile / Scrum"),
+        ("Architecture &amp; Engineering",      "HLD/LLD,  API Contracts, Distributed Systems, Event-Driven Architecture, Agile / Scrum"),
     ]
     sk_rows = [[Paragraph(k, SK_KEY), Paragraph(v, SK_VAL)] for k, v in skills]
     sk_table = Table(sk_rows, colWidths=[BW * 0.30, BW * 0.70])
@@ -190,35 +195,46 @@ def build(out=None, intl=True):
     ach = [
         ("<b>2nd Prize - lablab.ai Global AI Hackathon (2026)</b>",
          "NL2SQL + LangGraph enterprise dashboard with real-time alert engine."),
-        ("<b>Excellence Award (2026) - Walmart</b>",
+        ("<b>MADA Award (2026) - Walmart</b>",
          "For delivering a reusable platform capability that drove measurable cloud-cost savings."),
         ("<b>Excellence Award (2025) - Walmart</b>",
          "For an optimization initiative that significantly reduced data storage and consumption costs."),
         ("<b>Bravo Award (2025) - Walmart</b>",
-         "For applying Generative AI to improve on-call effectiveness and incident response"),
-        ("<b>Bravo Award (2025) - Walmart</b>",
-         "For accelerating modernization of legacy applications across the platform."),
-        ("<b>Excellence Award (2023) - Walmart</b>",
-         "For a platform scalability initiative supporting express-order growth without additional infrastructure investment"),
+         "For applying Generative AI to improve on-call effectiveness and incident response."),
+        ("<b>Excellence (2023) - Walmart</b>",
+         "For platform scalability initiative supporting express-order growth without additional infrastructure investment."),
         ("<b>Walmart Global Techathon - Runner-Up (2022)</b>",
          "Cart-based nutritional recommendation product for Walmart customers."),
-        ("<b>Clari Innovates Hackathon - Winner (2021)</b>",
+        ("<b>Clari Innovates Hackathon - Winner (2022)</b>",
          "Revamped internal tooling platform, adopted company-wide."),
     ]
     ach_style = S("ACH", fontSize=7.8, leading=10.5, leftIndent=0, spaceAfter=0.3, alignment=TA_LEFT)
     aw_rows = []
-    for i in range(0, len(ach), 2):
-        left_ach  = Paragraph(f"{ach[i][0]}: {ach[i][1]}", ach_style)
-        right_ach = Paragraph(f"{ach[i+1][0]}: {ach[i+1][1]}", ach_style) if i+1 < len(ach) else Paragraph("", ach_style)
-        aw_rows.append([left_ach, right_ach])
-    aw_table = Table(aw_rows, colWidths=[BW*0.497, BW*0.497], hAlign="LEFT", spaceBefore=0)
+
+    for i in range(len(ach)):
+        ach_para = Paragraph(
+            f"{ach[i][0]}: {ach[i][1]}",
+            ach_style
+        )
+        aw_rows.append([ach_para])
+
+    aw_table = Table(
+        aw_rows,
+        colWidths=[BW * 0.994],
+        hAlign="LEFT",
+        spaceBefore=0
+    )
+
     aw_table.setStyle(TableStyle([
-        ("LEFTPADDING",(0,0),(-1,-1),0), ("RIGHTPADDING",(0,0),(-1,-1),6),
-        ("TOPPADDING",(0,0),(-1,-1),1), ("BOTTOMPADDING",(0,0),(-1,-1),1),
-        ("VALIGN",(0,0),(-1,-1),"TOP"),
+        ("LEFTPADDING",   (0,0), (-1,-1), 0),
+        ("RIGHTPADDING",  (0,0), (-1,-1), 6),
+        ("TOPPADDING",    (0,0), (-1,-1), 1),
+        ("BOTTOMPADDING", (0,0), (-1,-1), 1),
+        ("VALIGN",        (0,0), (-1,-1), "TOP"),
     ]))
+
     s.append(aw_table)
-    s.append(Spacer(1,2))
+    s.append(Spacer(1, 2))
 
     # EDUCATION
     s += sec("Education")
@@ -231,11 +247,11 @@ def build(out=None, intl=True):
     edu = Table([
         [Paragraph(f"Indian Institute of Technology, Kharagpur{iit_context}", EDU_I),
          Paragraph("2014 - 2019", S("edy", fontSize=8, textColor=GREY, alignment=TA_RIGHT))],
-        [Paragraph("M.Tech + B.Tech, Computer Science &amp; Engineering (5-yr Dual Degree)", EDU_D),
+        [Paragraph("M.Tech + B.Tech, Computer Science &amp; Engineering (5-Year Dual Degree)", EDU_D),
          Paragraph("", EDU_D)],
         [Paragraph(
-            "Certification: <b>Applied Al for Real-World Applications - IIT Kharagpur</b>"
-            "<font color='#555555'>  (Delivered at Walmart)</font>", EDU_CERT),
+            "Certification: <b>Applied AI for Real-World Applications - IIT Kharagpur</b>"
+            "<font color='#555555'> (Delivered at Walmart)</font>", EDU_CERT),
          Paragraph("2026", S("ecy", fontSize=7.8, textColor=GREY, alignment=TA_RIGHT))],
     ], colWidths=[BW*0.78, BW*0.22])
     edu.setStyle(TableStyle([
