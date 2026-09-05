@@ -73,7 +73,7 @@ def role_block(co, dom, t1, d1, t2=None, d2=None):
 def b(txt):
     return Paragraph(f"&#x2022; {txt}", BUL)
 
-def build(out=None, intl=True):
+def build(out=None):
     if out is None:
         out = f"cv/{datetime.now():%Y-%m-%d}/Jacob_Resume.pdf"
 
@@ -238,14 +238,9 @@ def build(out=None, intl=True):
 
     # EDUCATION
     s += sec("Education")
-    iit_context = (
-        " <font size='7.5' color='#555555'>"
-        "(IIT - India\u2019s founding technical institutes, top 0.1% national admit rate)"
-        "</font>"
-    ) if intl else ""
     EDU_CERT = S("EC", fontName="Helvetica-Oblique", fontSize=7.4, textColor=DARK, leading=9.5)
     edu = Table([
-        [Paragraph(f"Indian Institute of Technology, Kharagpur{iit_context}", EDU_I),
+        [Paragraph(f"Indian Institute of Technology, Kharagpur", EDU_I),
          Paragraph("2014 - 2019", S("edy", fontSize=8, textColor=GREY, alignment=TA_RIGHT))],
         [Paragraph("M.Tech + B.Tech, Computer Science &amp; Engineering (5-Year Dual Degree)", EDU_D),
          Paragraph("", EDU_D)],
@@ -264,5 +259,4 @@ def build(out=None, intl=True):
     print(f"\u2705  CV written to: {out}")
 
 if __name__ == "__main__":
-    build(intl=True)
-    build(intl=False)
+    build()
